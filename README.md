@@ -1,6 +1,3 @@
-
-<iframe src="https://ghbtns.com/github-btn.html?user=13916253446&repo=release-easy&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
-
 # 主要做哪些事情
 
 1、语义化版本</br>
