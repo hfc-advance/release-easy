@@ -4,6 +4,7 @@ const semver = require('semver')
 const pacJsonPath = `${CWD}/package.json`
 const inquirer = require('inquirer')
 const execa = require('execa')
+const path = require('path')
 
 async function release (options) {
   const exists = await asyncFileIsExists(pacJsonPath)
