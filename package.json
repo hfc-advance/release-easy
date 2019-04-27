@@ -3,6 +3,9 @@
   "version": "1.0.3",
   "description": "愉快的发布npm包",
   "main": "scripts/release.js",
+  "bin": {
+    "release-easy": "bin/index.js"
+  },
   "scripts": {
     "test": "echo 1"
   },
@@ -28,5 +31,8 @@
     "inquirer": "^6.3.1",
     "semver": "^6.0.0",
     "vue": "^2.0.0"
+  },
+  "devDependencies": {
+    "commander": "^2.20.0"
   }
 }
