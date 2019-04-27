@@ -1,6 +1,6 @@
 {
   "name": "release-easy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "愉快的发布npm包",
   "main": "scripts/release.js",
   "scripts": {
@@ -10,7 +10,12 @@
     "type": "git",
     "url": "git+https://github.com/13916253446/release-easy.git"
   },
-  "keywords": ["release", "release-easy", "easy", "publish"],
+  "keywords": [
+    "release",
+    "release-easy",
+    "easy",
+    "publish"
+  ],
   "author": "崔海峰",
   "license": "ISC",
   "bugs": {
