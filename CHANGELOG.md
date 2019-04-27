@@ -1,4 +1,4 @@
-## v1.0.3 (2019-04-27)
+# v1.1.0 (2019-04-27)
 
 
 ### Bug Fixes
@@ -9,8 +9,11 @@
 ### Features
 
 *  :100:完善keywords:100: ([7ec37b8](https://github.com/13916253446/release-easy/commit/7ec37b8))
+*  :100:完善文档:100: ([9636d70](https://github.com/13916253446/release-easy/commit/9636d70))
 *  :100:完善文档:100: ([03cc680](https://github.com/13916253446/release-easy/commit/03cc680))
 *  :100:完善文档:100: ([942575d](https://github.com/13916253446/release-easy/commit/942575d))
+*  🎉增加命令行支持 ([f55fc61](https://github.com/13916253446/release-easy/commit/f55fc61))
+*  🎉增加命令行文档说明 ([00bc009](https://github.com/13916253446/release-easy/commit/00bc009))
 
 
 
