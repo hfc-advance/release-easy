@@ -3,8 +3,9 @@ const fs = require('fs')
 const semver = require('semver')
 const pacJsonPath = `${CWD}/package.json`
 const inquirer = require('inquirer')
+const execa = require('execa')
 
-async function release () {
+async function release (options) {
   const exists = await asyncFileIsExists(pacJsonPath)
   if (!exists) throw new Error('未发现package.json文件')
 
@@ -47,6 +48,9 @@ async function release () {
   pkgContent.version = version
   fs.writeFileSync(pacJsonPath, JSON.stringify(pkgContent, null, 2))
 
+  if (Object.prototype.toString.call(options) === '[object Object]' && options.semVerCallback) await writeVersionCallback(options.semVerCallback)
+
+  require('./genChangelog.js')(version)
 }
 
 function asyncFileIsExists (path) {
@@ -57,7 +61,18 @@ function asyncFileIsExists (path) {
   })
 }
 
-release().catch(err => {
+async function writeVersionCallback (callback) {
+  if (Object.prototype.toString.call(callback) === '[object Function]') {
+    await callback()
+  }
+  if (Object.prototype.toString.call(callback) === '[object String]') {
+    await execa('npm', [callback], { stdio: 'inherit' })
+  }
+}
+
+/* release().catch(err => {
   console.error(err)
   process.exit(1)
-})
+}) */
+
+module.exports = release
