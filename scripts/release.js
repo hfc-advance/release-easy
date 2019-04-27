@@ -50,7 +50,14 @@ async function release (options) {
 
   if (Object.prototype.toString.call(options) === '[object Object]' && options.semVerCallback) await writeVersionCallback(options.semVerCallback)
 
-  require('./genChangelog.js')(version)
+  await require('./genChangelog.js')(version)
+
+  const npmRegistry = (options && options.npmRegistry) || 'https://registry.npmjs.org/'
+  await execa(
+    'npm',
+    ['publish', '--registry', npmRegistry],
+    { stdio: 'inherit', cwd: path.dirname(pacJsonPath) }
+  )
 }
 
 function asyncFileIsExists (path) {
