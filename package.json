@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/13916253446/release-easy.git"
   },
-  "keywords": [],
+  "keywords": ["release", "release-easy", "easy", "publish"],
   "author": "崔海峰",
   "license": "ISC",
   "bugs": {
