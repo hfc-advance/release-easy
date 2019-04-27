@@ -1,8 +1,8 @@
 {
   "name": "release-easy",
-  "version": "8.0.1-0",
+  "version": "1.0.0",
   "description": "愉快的发布npm包",
-  "main": "index.js",
+  "main": "scripts/release.js",
   "scripts": {
     "test": "echo 1"
   },
@@ -21,6 +21,7 @@
     "conventional-changelog": "^3.1.4",
     "execa": "^1.0.0",
     "inquirer": "^6.3.1",
-    "semver": "^6.0.0"
+    "semver": "^6.0.0",
+    "vue": "^2.0.0"
   }
 }
