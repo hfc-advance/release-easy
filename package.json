@@ -1,6 +1,6 @@
 {
   "name": "release-easy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "愉快的发布npm包",
   "main": "scripts/release.js",
   "scripts": {
