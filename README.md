@@ -31,3 +31,26 @@ release({
   npmRegistry: 'http://nexus.qutoutiao.net/repository/qtt/'
 })
 ```
+
+# 也可以通过`shell`使用
+
+```javascript
+npm install -g release-easy
+
+// 或者是
+npm install --save-dev release-easy
+// 通过npm script来使用
+{
+  "script": {
+    "release": "release-easy"
+  }
+}
+```
+
+```
+Options:
+  -V, --version                 output the version number
+  -c --callback <npmScript>     语义化版本之后执行的npm脚本
+  -r, --registry <npmRegistry>  设置发布的npm源
+  -h, --help                    output usage information
+```
