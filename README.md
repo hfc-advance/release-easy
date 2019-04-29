@@ -28,7 +28,7 @@ const release = require('release-easy')
 
 release({
   semVerCallback: 'build' // npm run build
-  npmRegistry: 'http://nexus.qutoutiao.net/repository/qtt/'
+  npmRegistry: 'https://registry.npmjs.org/'
 })
 ```
 
