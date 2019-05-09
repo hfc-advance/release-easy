@@ -1,4 +1,4 @@
-## v1.1.1 (2019-04-29)
+## v1.1.2 (2019-05-09)
 
 
 ### Bug Fixes
@@ -15,6 +15,7 @@
 *  🎉增加命令行支持 ([f55fc61](https://github.com/13916253446/release-easy/commit/f55fc61))
 *  🎉增加命令行文档说明 ([00bc009](https://github.com/13916253446/release-easy/commit/00bc009))
 * :tada:修改文档:tada: ([6ae956e](https://github.com/13916253446/release-easy/commit/6ae956e))
+* 🥳添加生成changelog之后push到远程scripts🥳 ([438e557](https://github.com/13916253446/release-easy/commit/438e557))
 
 
 
