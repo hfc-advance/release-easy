@@ -1,12 +1,16 @@
 const CWD = process.cwd()
 const fs = require('fs')
 const semver = require('semver')
-const pacJsonPath = `${CWD}/package.json`
+let pacJsonPath = `${CWD}/package.json`
 const inquirer = require('inquirer')
 const execa = require('execa')
 const path = require('path')
 
 async function release (options) {
+  // 自定义publish目录
+  if (options.cwdDir) {
+    pacJsonPath = `${options.cwdDir}/package.json`
+  }
   const exists = await asyncFileIsExists(pacJsonPath)
   if (!exists) throw new Error('未发现package.json文件')
 
