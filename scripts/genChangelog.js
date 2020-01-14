@@ -16,9 +16,12 @@ const gen = module.exports = version => {
       }
     }
   }).pipe(fileStream).on('close', async () => {
-    await execa('git', ['add', '-A'], { stdio: 'inherit' })
-    await execa('git', ['commit', '-m', `chore: ${version} changelog [ci skip]`], { stdio: 'inherit' })
-    await execa('git', ['push'], { stdio: 'inherit' })
+    try {
+      await execa('git', ['add', '-A'], { stdio: 'inherit' })
+      await execa('git', ['commit', '-m', `chore: ${version} changelog [ci skip]`], { stdio: 'inherit' })
+      await execa('git', ['push'], { stdio: 'inherit' })
+    } catch (error) {
+    }
   })
 }
 

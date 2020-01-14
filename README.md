@@ -20,6 +20,8 @@ release(options)
 ---|---|---|---|---
 semVerCallback|Function&#124;String|--|否|语义化版本之后要做的事情，可以传递回调函数引用，或者一个`npm scripts`指令
 npmRegistry|String|https://registry.npmjs.org/|否|要发布npm的源
+cwdDir|String|process.cwd()|否|自定义发布目录
+syncVersionForJson|String|---|否|需要同步发布版本的package.json
 
 # 例子
 

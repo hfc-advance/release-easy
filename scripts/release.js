@@ -48,12 +48,20 @@ async function release (options) {
 
   if (!yes) return false
 
+  // 判断是否存在同步版本的json
+  if (options.syncVersionForJson) {
+    const syncPkgContent = JSON.parse(fs.readFileSync(options.syncVersionForJson))
+
+    syncPkgContent.version = version
+    fs.writeFileSync(pacJsonPath, JSON.stringify(syncPkgContent, null, 2))
+  }
+
+  if (Object.prototype.toString.call(options) === '[object Object]' && options.semVerCallback) await writeVersionCallback(options.semVerCallback)
+
   const pkgContent = JSON.parse(fs.readFileSync(pacJsonPath))
 
   pkgContent.version = version
   fs.writeFileSync(pacJsonPath, JSON.stringify(pkgContent, null, 2))
-
-  if (Object.prototype.toString.call(options) === '[object Object]' && options.semVerCallback) await writeVersionCallback(options.semVerCallback)
 
   await require('./genChangelog.js')(version)
 
@@ -78,7 +86,7 @@ async function writeVersionCallback (callback) {
     await callback()
   }
   if (Object.prototype.toString.call(callback) === '[object String]') {
-    await execa('npm', [callback], { stdio: 'inherit' })
+    await execa('npm', ['run', callback], { stdio: 'inherit' })
   }
 }
 
