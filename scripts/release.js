@@ -53,7 +53,7 @@ async function release (options) {
     const syncPkgContent = JSON.parse(fs.readFileSync(options.syncVersionForJson))
 
     syncPkgContent.version = version
-    fs.writeFileSync(pacJsonPath, JSON.stringify(syncPkgContent, null, 2))
+    fs.writeFileSync(options.syncVersionForJson, JSON.stringify(syncPkgContent, null, 2))
   }
 
   if (Object.prototype.toString.call(options) === '[object Object]' && options.semVerCallback) await writeVersionCallback(options.semVerCallback)
