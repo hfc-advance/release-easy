@@ -11,10 +11,14 @@ async function release (options) {
   if (options.cwdDir) {
     pacJsonPath = `${options.cwdDir}/package.json`
   }
-  const exists = await asyncFileIsExists(pacJsonPath)
-  if (!exists) throw new Error('未发现package.json文件')
-
-  const curVersion = require(pacJsonPath).version
+  // const exists = await asyncFileIsExists(pacJsonPath)
+  // if (!exists) throw new Error('未发现package.json文件')
+  let curVersion = '1.0.0'
+  if (options.syncVersionForJson) {
+    curVersion = require(options.syncVersionForJson).version
+  } else if (pacJsonPath) {
+    curVersion = require(pacJsonPath).version
+  }
   const bumps = [{ type: 'major', intro: '大版本更新,不能向下兼容' }, { type: 'minor', intro: '小版本更新,兼容老版本' }, { type: 'patch', intro: '补丁版本更新,兼容老版本,只是修复一些bug' }, { type: 'prerelease', intro: '预发版本' }]
   const versions = {}
   bumps.forEach(({ type: b }) => { versions[b] = semver.inc(curVersion, b) })
@@ -48,6 +52,8 @@ async function release (options) {
 
   if (!yes) return false
 
+  if (Object.prototype.toString.call(options) === '[object Object]' && options.semVerCallback) await writeVersionCallback(options.semVerCallback)
+
   // 判断是否存在同步版本的json
   if (options.syncVersionForJson) {
     const syncPkgContent = JSON.parse(fs.readFileSync(options.syncVersionForJson))
@@ -55,8 +61,6 @@ async function release (options) {
     syncPkgContent.version = version
     fs.writeFileSync(options.syncVersionForJson, JSON.stringify(syncPkgContent, null, 2))
   }
-
-  if (Object.prototype.toString.call(options) === '[object Object]' && options.semVerCallback) await writeVersionCallback(options.semVerCallback)
 
   const pkgContent = JSON.parse(fs.readFileSync(pacJsonPath))
 
