@@ -62,7 +62,7 @@ async function release (options) {
     fs.writeFileSync(options.syncVersionForJson, JSON.stringify(syncPkgContent, null, 2))
   }
 
-  const pkgContent = JSON.parse(fs.readFileSync(pacJsonPath))
+  const pkgContent = JSON.parse(fs.readFileSync(options.syncVersionForJson || pacJsonPath))
 
   pkgContent.version = version
   fs.writeFileSync(pacJsonPath, JSON.stringify(pkgContent, null, 2))
