@@ -67,6 +67,9 @@ async function release (options) {
   pkgContent.version = version
   fs.writeFileSync(pacJsonPath, JSON.stringify(pkgContent, null, 2))
 
+  // publish之前的动作
+  if (options.beforePublish) await options.beforePublish()
+
   await require('./genChangelog.js')(version)
 
   const npmRegistry = (options && options.npmRegistry) || 'https://registry.npmjs.org/'
